@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content="AISW대학 안태준의 웹프로그래밍 수업용 개인 소개 웹사이트"
+  />
+
+  <title>안태준 | AISW대학 개인 웹페이지</title>
+
+  <!-- 나눔고딕 -->
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css"
+  />
+
+  <style>
+    /* =========================================================
+       기본 설정
+    ========================================================= */
+
+    :root {
+      --sky: #69c8f2;
+      --sky-deep: #2196d3;
+      --sky-light: #dff5ff;
+
+      --black: #101820;
+      --black-soft: #1b2630;
+
+      --white: #ffffff;
+      --white-soft: #f7fbfd;
+
+      --gray: #687782;
+      --line: rgba(16, 24, 32, 0.1);
+
+      --shadow:
+        0 20px 60px rgba(23, 101, 139, 0.12);
+
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Nanum Gothic", "Noto Sans KR", sans-serif;
+      color: var(--black);
+      background: var(--white-soft);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+
+    /* =========================================================
+       네비게이션
+    ========================================================= */
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+    }
+
+    .nav-inner {
+      max-width: 1180px;
+      margin: auto;
+      height: 72px;
+
+      padding: 0 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--sky-deep);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      font-size: 14px;
+      font-weight: 700;
+      color: #33434e;
+      transition: 0.25s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--sky-deep);
+    }
+
+    .menu-btn {
+      display: none;
+
+      border: 0;
+      background: none;
+      cursor: pointer;
+
+      font-size: 25px;
+    }
+
+
+    /* =========================================================
+       HERO - 하늘
+    ========================================================= */
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      padding: 150px 24px 100px;
+
+      overflow: hidden;
+
+      display: flex;
+      align-items: center;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(73, 181, 232, 0.72),
+          rgba(196, 237, 255, 0.88)
+        ),
+        url("https://images.unsplash.com/photo-1499346030926-9a72daac6c63?auto=format&fit=crop&w=2000&q=85")
+        center / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          transparent 55%,
+          rgba(255,255,255,0.85) 100%
+        );
+
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 5;
+
+      width: 100%;
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 9px 15px;
+
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.8);
+
+      border-radius: 999px;
+
+      font-size: 13px;
+      font-weight: 800;
+
+      color: #175f80;
+
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      margin-top: 24px;
+
+      font-size: clamp(52px, 8vw, 100px);
+      line-height: 0.98;
+      letter-spacing: -6px;
+
+      font-weight: 900;
+      color: var(--black);
+
+      text-shadow:
+        0 4px 30px rgba(255,255,255,0.4);
+    }
+
+    .hero h1 span {
+      color: white;
+      -webkit-text-stroke: 1px rgba(16,24,32,0.12);
+    }
+
+    .hero-description {
+      margin-top: 28px;
+
+      max-width: 600px;
+
+      font-size: 18px;
+      color: #294452;
+      font-weight: 600;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 14px 22px;
+
+      border-radius: 999px;
+
+      font-size: 14px;
+      font-weight: 800;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.25s,
+        box-shadow 0.25s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-dark {
+      background: var(--black);
+      color: white;
+
+      box-shadow: 0 12px 30px rgba(16,24,32,0.2);
+    }
+
+    .btn-light {
+      background: rgba(255,255,255,0.78);
+      color: var(--black);
+
+      border: 1px solid rgba(255,255,255,0.9);
+    }
+
+
+    /* =========================================================
+       하늘 장식
+    ========================================================= */
+
+    .cloud {
+      position: absolute;
+
+      width: 170px;
+      height: 55px;
+
+      background: rgba(255,255,255,0.78);
+      border-radius: 999px;
+
+      filter: blur(1px);
+
+      opacity: 0.8;
+
+      animation: floatCloud linear infinite;
+    }
+
+    .cloud::before,
+    .cloud::after {
+      content: "";
+      position: absolute;
+
+      background: inherit;
+      border-radius: 50%;
+    }
+
+    .cloud::before {
+      width: 80px;
+      height: 80px;
+
+      left: 25px;
+      bottom: 10px;
+    }
+
+    .cloud::after {
+      width: 100px;
+      height: 100px;
+
+      right: 20px;
+      bottom: 0;
+    }
+
+    .cloud-1 {
+      top: 20%;
+      left: -80px;
+      animation-duration: 42s;
+    }
+
+    .cloud-2 {
+      top: 35%;
+      right: -100px;
+      transform: scale(0.75);
+      animation-duration: 55s;
+      animation-delay: -15s;
+    }
+
+    .cloud-3 {
+      top: 10%;
+      right: 18%;
+      transform: scale(0.48);
+      opacity: 0.55;
+      animation-duration: 65s;
+      animation-delay: -30s;
+    }
+
+    @keyframes floatCloud {
+      0% {
+        translate: -20px 0;
+      }
+
+      50% {
+        translate: 80px 12px;
+      }
+
+      100% {
+        translate: -20px 0;
+      }
+    }
+
+    .bird {
+      position: absolute;
+      z-index: 3;
+
+      color: rgba(16,24,32,0.68);
+
+      font-size: 25px;
+
+      animation:
+        birdFly 16s ease-in-out infinite;
+    }
+
+    .bird-1 {
+      top: 24%;
+      right: 20%;
+    }
+
+    .bird-2 {
+      top: 30%;
+      right: 28%;
+      font-size: 17px;
+      animation-delay: -5s;
+    }
+
+    .bird-3 {
+      top: 19%;
+      right: 34%;
+      font-size: 13px;
+      animation-delay: -10s;
+    }
+
+    @keyframes birdFly {
+      0%, 100% {
+        transform: translate(0, 0) rotate(-3deg);
+      }
+
+      50% {
+        transform: translate(-35px, -18px) rotate(5deg);
+      }
+    }
+
+
+    /* =========================================================
+       공통 SECTION
+    ========================================================= */
+
+    section {
+      padding: 110px 24px;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-label {
+      display: inline-block;
+
+      color: var(--sky-deep);
+
+      font-size: 13px;
+      font-weight: 900;
+
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin-top: 10px;
+
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.15;
+
+      letter-spacing: -2px;
+      font-weight: 900;
+    }
+
+    .section-subtitle {
+      margin-top: 15px;
+
+      color: var(--gray);
+      font-size: 16px;
+    }
+
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+
+    .about {
+      background: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 70px;
+
+      align-items: center;
+
+      margin-top: 55px;
+    }
+
+    .profile-card {
+      position: relative;
+
+      overflow: hidden;
+
+      border-radius: 32px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #dff5ff,
+          #ffffff
+        );
+
+      box-shadow: var(--shadow);
+
+      aspect-ratio: 4 / 5;
+    }
+
+    .profile-card::before {
+      content: "☁";
+
+      position: absolute;
+      top: 18px;
+      left: 22px;
+
+      font-size: 75px;
+      opacity: 0.25;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      mix-blend-mode: multiply;
+
+      opacity: 0.9;
+    }
+
+    .profile-info {
+      position: absolute;
+      left: 25px;
+      right: 25px;
+      bottom: 25px;
+
+      padding: 20px;
+
+      border-radius: 20px;
+
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(12px);
+    }
+
+    .profile-info strong {
+      display: block;
+      font-size: 21px;
+    }
+
+    .profile-info span {
+      display: block;
+
+      margin-top: 3px;
+
+      color: var(--gray);
+      font-size: 13px;
+    }
+
+    .about-text h3 {
+      font-size: 28px;
+      line-height: 1.4;
+      letter-spacing: -1.5px;
+    }
+
+    .about-text p {
+      margin-top: 20px;
+
+      color: #5d6b74;
+      font-size: 16px;
+    }
+
+    .keyword-list {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+
+      margin-top: 25px;
+    }
+
+    .keyword {
+      padding: 8px 13px;
+
+      background: var(--sky-light);
+      color: #1a759c;
+
+      border-radius: 999px;
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+
+    /* =========================================================
+       TIMELINE
+    ========================================================= */
+
+    .timeline-section {
+      background: #f5fbfe;
+    }
+
+    .timeline {
+      position: relative;
+
+      margin-top: 55px;
+    }
+
+    .timeline::before {
+      content: "";
+
+      position: absolute;
+
+      left: 9px;
+      top: 5px;
+      bottom: 5px;
+
+      width: 2px;
+
+      background: #bce7f7;
+    }
+
+    .timeline-item {
+      position: relative;
+
+      padding-left: 45px;
+      padding-bottom: 45px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+
+      left: 0;
+      top: 4px;
+
+      width: 20px;
+      height: 20px;
+
+      border-radius: 50%;
+
+      background: var(--sky);
+
+      border: 5px solid white;
+
+      box-shadow: 0 0 0 2px #bce7f7;
+    }
+
+    .timeline-date {
+      display: inline-block;
+
+      color: var(--sky-deep);
+
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .timeline-title {
+      margin-top: 5px;
+
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .timeline-desc {
+      margin-top: 7px;
+
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+
+    /* =========================================================
+       CARDS
+    ========================================================= */
+
+    .cards-section {
+      background: white;
+    }
+
+    .cards {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+
+      margin-top: 50px;
+    }
+
+    .card {
+      padding: 30px;
+
+      background: white;
+
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+
+      box-shadow: 0 10px 40px rgba(16,24,32,0.05);
+
+      transition:
+        transform 0.25s,
+        box-shadow 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+
+      box-shadow:
+        0 20px 50px rgba(31,130,171,0.12);
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 16px;
+
+      background: var(--sky-light);
+
+      font-size: 24px;
+    }
+
+    .card h3 {
+      margin-top: 20px;
+
+      font-size: 19px;
+    }
+
+    .card p {
+      margin-top: 10px;
+
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+
+    /* =========================================================
+       SKILLS
+    ========================================================= */
+
+    .skills {
+      background: var(--black);
+      color: white;
+    }
+
+    .skills .section-subtitle {
+      color: #9daab2;
+    }
+
+    .skills-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 35px;
+
+      margin-top: 55px;
+    }
+
+    .skill {
+      margin-bottom: 20px;
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+
+      margin-bottom: 9px;
+
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .skill-bar {
+      height: 8px;
+
+      overflow: hidden;
+
+      background: #2c3942;
+
+      border-radius: 999px;
+    }
+
+    .skill-progress {
+      height: 100%;
+
+      width: var(--level);
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--sky),
+          #c8f1ff
+        );
+
+      border-radius: inherit;
+
+      transform-origin: left;
+
+      animation: skillIn 1.3s ease both;
+    }
+
+    @keyframes skillIn {
+      from {
+        transform: scaleX(0);
+      }
+
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+
+    /* =========================================================
+       PERSONALITY
+    ========================================================= */
+
+    .personality {
+      background:
+        linear-gradient(
+          135deg,
+          #eaf9ff,
+          white
+        );
+    }
+
+    .personality-grid {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 14px;
+
+      margin-top: 50px;
+    }
+
+    .personality-item {
+      padding: 25px 18px;
+
+      text-align: center;
+
+      background: rgba(255,255,255,0.8);
+
+      border: 1px solid rgba(60,160,205,0.12);
+
+      border-radius: 22px;
+    }
+
+    .personality-item .emoji {
+      font-size: 35px;
+    }
+
+    .personality-item strong {
+      display: block;
+
+      margin-top: 12px;
+
+      font-size: 15px;
+    }
+
+    .personality-item span {
+      display: block;
+
+      margin-top: 5px;
+
+      color: var(--gray);
+
+      font-size: 12px;
+    }
+
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+
+    .contact {
+      position: relative;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          #62c6ed,
+          #dff7ff
+        );
+    }
+
+    .contact-inner {
+      position: relative;
+      z-index: 2;
+
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: clamp(35px, 6vw, 65px);
+
+      letter-spacing: -3px;
+    }
+
+    .contact p {
+      margin-top: 16px;
+
+      color: #285264;
+    }
+
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+
+      gap: 10px;
+
+      margin-top: 30px;
+
+      flex-wrap: wrap;
+    }
+
+    .contact-cloud {
+      position: absolute;
+
+      font-size: 150px;
+
+      opacity: 0.15;
+
+      pointer-events: none;
+    }
+
+    .contact-cloud.left {
+      left: -20px;
+      bottom: -55px;
+    }
+
+    .contact-cloud.right {
+      right: -20px;
+      top: -70px;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      padding: 28px 20px;
+
+      text-align: center;
+
+      background: var(--black);
+      color: #84919a;
+
+      font-size: 12px;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+
+    /* =========================================================
+       TOP BUTTON
+    ========================================================= */
+
+    .top-btn {
+      position: fixed;
+
+      right: 22px;
+      bottom: 22px;
+
+      z-index: 900;
+
+      width: 46px;
+      height: 46px;
+
+      border: 0;
+      border-radius: 50%;
+
+      background: var(--black);
+      color: white;
+
+      cursor: pointer;
+
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+      opacity: 0;
+      pointer-events: none;
+
+      transform: translateY(15px);
+
+      transition: 0.3s;
+    }
+
+    .top-btn.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+
+    /* =========================================================
+       모바일
+    ========================================================= */
+
+    @media (max-width: 800px) {
+
+      .nav-inner {
+        height: 64px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-menu {
+        position: absolute;
+
+        top: 64px;
+        left: 15px;
+        right: 15px;
+
+        display: none;
+
+        flex-direction: column;
+
+        padding: 20px;
+
+        background: rgba(255,255,255,0.96);
+
+        border-radius: 20px;
+
+        box-shadow: var(--shadow);
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .hero {
+        min-height: 780px;
+
+        padding-top: 130px;
+      }
+
+      .hero h1 {
+        letter-spacing: -4px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+      }
+
+      .profile-card {
+        max-width: 420px;
+        margin: auto;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .personality-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+
+    @media (max-width: 480px) {
+
+      section {
+        padding: 80px 18px;
+      }
+
+      .nav-inner {
+        padding: 0 18px;
+      }
+
+      .hero {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .hero h1 {
+        font-size: 58px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .personality-grid {
+        gap: 9px;
+      }
+
+      .personality-item {
+        padding: 20px 10px;
+      }
+
+      .personality-item .emoji {
+        font-size: 28px;
+      }
+
+      .top-btn {
+        right: 15px;
+        bottom: 15px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- ========================================================
+       NAVIGATION
+  ========================================================= -->
+
+  <header class="navbar">
+    <div class="nav-inner">
+
+      <a href="#home" class="logo">
+        TAEJUN<span>.</span>
+      </a>
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="메뉴 열기"
+      >
+        ☰
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#about">소개</a></li>
+        <li><a href="#education">학력</a></li>
+        <li><a href="#career">경력</a></li>
+        <li><a href="#certificate">자격</a></li>
+        <li><a href="#personality">성격</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+    </div>
+  </header>
+
+
+  <!-- ========================================================
+       HERO
+  ========================================================= -->
+
+  <main>
+
+    <section class="hero" id="home">
+
+      <!-- 구름 -->
+      <div class="cloud cloud-1"></div>
+      <div class="cloud cloud-2"></div>
+      <div class="cloud cloud-3"></div>
+
+      <!-- 새 -->
+      <div class="bird bird-1">⌁</div>
+      <div class="bird bird-2">⌁</div>
+      <div class="bird bird-3">⌁</div>
+
+      <div class="hero-inner">
+
+        <div class="hero-copy">
+
+          <span class="eyebrow">
+            ☁ AISW UNIVERSITY · WEB PROGRAMMING
+          </span>
+
+          <h1>
+            안태준<span>.</span>
+          </h1>
+
+          <p class="hero-description">
+            안녕하세요.<br />
+            AISW대학에서 배우고 성장하고 있는
+            <strong>안태준</strong>입니다.
+            <br />
+            맑은 하늘처럼 자유롭게 생각하고,
+            꾸준히 새로운 것을 만들어가는 것을 좋아합니다.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#about" class="btn btn-dark">
+              저를 소개합니다 →
+            </a>
+
+            <a href="#contact" class="btn btn-light">
+              연락하기
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         ABOUT
+    ====================================================== -->
+
+    <section class="about" id="about">
+
+      <div class="section-inner">
+
+        <span class="section-label">
+          ABOUT ME
+        </span>
+
+        <h2 class="section-title">
+          하늘을 보며<br />
+          새로운 것을 생각합니다.
+        </h2>
+
+        <p class="section-subtitle">
+          AISW대학 · 웹프로그래밍 수업용 개인 소개 페이지
+        </p>
+
+
+        <div class="about-grid">
+
+          <div class="profile-card">
+
+            <!--
+              실제 본인 사진으로 교체하려면
+              src="profile.jpg" 등으로 변경하세요.
+            -->
+
+            <img
+              class="profile-photo"
+              src="https://images.unsplash.com/photo-1499346030926-9a72daac6c63?auto=format&fit=crop&w=900&q=85"
+              alt="푸른 하늘과 구름"
+            />
+
+            <div class="profile-info">
+              <strong>안태준</strong>
+              <span>AISW대학 · Web Programming</span>
+            </div>
+
+          </div>
+
+
+          <div class="about-text">
+
+            <h3>
+              배우는 과정 자체를<br />
+              즐기는 사람입니다.
+            </h3>
+
+            <p>
+              저는 새로운 기술을 배우고 직접 만들어보는 것을 좋아합니다.
+              특히 웹페이지를 만들면서 아이디어가 실제 화면으로 구현되는
+              과정을 흥미롭게 생각합니다.
+            </p>
+
+            <p>
+              검정색과 흰색처럼 깔끔한 디자인을 좋아하고,
+              하늘색처럼 편안하고 시원한 분위기를 좋아합니다.
+              최근에는 예쁜 하늘과 구름을 보는 것도 좋아합니다.
+            </p>
+
+            <div class="keyword-list">
+              <span class="keyword">#웹프로그래밍</span>
+              <span class="keyword">#HTML</span>
+              <span class="keyword">#CSS</span>
+              <span class="keyword">#JavaScript</span>
+              <span class="keyword">#AISW</span>
+              <span class="keyword">#하늘</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         EDUCATION
+    ====================================================== -->
+
+    <section class="timeline-section" id="education">
+
+      <div class="section-inner">
+
+        <span class="section-label">
+          EDUCATION
+        </span>
+
+        <h2 class="section-title">
+          학력
+        </h2>
+
+        <p class="section-subtitle">
+          저의 학업 과정을 소개합니다.
+        </p>
+
+
+        <div class="timeline">
+
+          <!-- 실제 정보로 수정 -->
+
+          <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <span class="timeline-date">
+              20XX — 현재
+            </span>
+
+            <h3 class="timeline-title">
+              AISW대학
+            </h3>
+
+            <p class="timeline-desc">
+              전공 / 학과명을 입력해주세요.
+              <br />
+              관심 분야: 웹프로그래밍, 소프트웨어, AI 등
+            </p>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <span class="timeline-date">
+              20XX — 20XX
+            </span>
+
+            <h3 class="timeline-title">
+              이전 학교 / 교육기관
+            </h3>
+
+            <p class="timeline-desc">
+              실제 학력 정보를 입력해주세요.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         CAREER
+    ====================================================== -->
+
+    <section class="cards-section" id="career">
+
+      <div class="section-inner">
+
+        <span class="section-label">
+          CAREER
+        </span>
+
+        <h2 class="section-title">
+          경력 & 활동
+        </h2>
+
+        <p class="section-subtitle">
+          프로젝트와 활동 경험을 기록합니다.
+        </p>
+
+
+        <div class="cards">
+
+          <article class="card">
+
+            <div class="card-icon">
+              💻
+            </div>
+
+            <h3>
+              웹프로그래밍 프로젝트
+            </h3>
+
+            <p>
+              HTML, CSS, JavaScript를 활용한
+              개인 웹페이지 제작 및 프로젝트 경험을
+              소개하는 공간입니다.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="card-icon">
+              ☁️
+            </div>
+
+            <h3>
+              프로젝트 / 활동
+            </h3>
+
+            <p>
+              실제 참여했던 프로젝트,
+              동아리, 공모전, 대외활동 등의
+              내용을 입력해주세요.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="card-icon">
+              🚀
+            </div>
+
+            <h3>
+              앞으로의 목표
+            </h3>
+
+            <p>
+              웹 개발과 AI/SW 분야에서
+              배우고 싶은 것과 앞으로의 목표를
+              자유롭게 작성해주세요.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         CERTIFICATE
+    ====================================================== -->
+
+    <section class="timeline-section" id="certificate">
+
+      <div class="section-inner">
+
+        <span class="section-label">
+          CERTIFICATE
+        </span>
+
+        <h2 class="section-title">
+          자격 & 수료
+        </h2>
+
+        <p class="section-subtitle">
+          취득한 자격증과 교육 수료 이력을 정리합니다.
+        </p>
+
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <span class="timeline-date">
+              20XX.XX
+            </span>
+
+            <h3 class="timeline-title">
+              자격증 이름
+            </h3>
+
+            <p class="timeline-desc">
+              발급기관 / 자격번호 등 필요한 정보를 입력하세요.
+            </p>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <span class="timeline-date">
+              20XX.XX
+            </span>
+
+            <h3 class="timeline-title">
+              교육 및 수료 과정
+            </h3>
+
+            <p class="timeline-desc">
+              교육기관 / 교육내용을 입력해주세요.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         SKILLS
+    ====================================================== -->
+
+    <section class="skills">
+
+      <div class="section-inner">
+
+        <span class="section-label">
+          SKILLS
+        </span>
+
+        <h2 class="section-title">
+          관심 기술
+        </h2>
+
+        <p class="section-subtitle">
+          현재 배우고 있거나 관심을 가지고 있는 기술입니다.
+        </p>
+
+
+        <div class="skills-grid">
+
+          <div>
+
+            <div class="skill">
+
+              <div class="skill-header">
+                <span>HTML</span>
+                <span>80%</span>
+              </div>
+
+              <div class="skill-bar">
+                <div
+                  class="skill-progress"
+                  style="--level: 80%"
+                ></div>
+              </div>
+
+            </div>
+
+
+            <div class="skill">
+
+              <div class="skill-header">
+                <span>CSS</span>
+                <span>75%</span>
+              </div>
+
+              <div class="skill-bar">
+                <div
+                  class="skill-progress"
+                  style="--level: 75%"
+                ></div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div>
+
+            <div class="skill">
+
+              <div class="skill-header">
+                <span>JavaScript</span>
+                <span>65%</span>
+              </div>
+
+              <div class="skill-bar">
+                <div
+                  class="skill-progress"
+                  style="--level: 65%"
+                ></div>
+              </div>
+
+            </div>
+
+
+            <div class="skill">
+
+              <div class="skill-header">
+                <span>AI / SW</span>
+                <span>60%</span>
+              </div>
+
+              <div class="skill-bar">
+                <div
+                  class="skill-progress"
+                  style="--level: 60%"
+                ></div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         PERSONALITY
+    ====================================================== -->
+
+    <section class="personality" id="personality">
+
+      <div class="section-inner">
+
+        <span class="section-label">
+          PERSONALITY
+        </span>
+
+        <h2 class="section-title">
+          저를 표현하는 네 가지
+        </h2>
+
+        <p class="section-subtitle">
+          제가 중요하게 생각하는 성향과 특징입니다.
+        </p>
+
+
+        <div class="personality-grid">
+
+          <div class="personality-item">
+            <div class="emoji">💡</div>
+            <strong>호기심</strong>
+            <span>새로운 것을 배우는 것을 좋아합니다.</span>
+          </div>
+
+          <div class="personality-item">
+            <div class="emoji">🎯</div>
+            <strong>꾸준함</strong>
+            <span>작은 목표부터 차근차근 해냅니다.</span>
+          </div>
+
+          <div class="personality-item">
+            <div class="emoji">🤝</div>
+            <strong>협력</strong>
+            <span>함께 생각하고 만드는 과정을 좋아합니다.</span>
+          </div>
+
+          <div class="personality-item">
+            <div class="emoji">☁️
